@@ -1,0 +1,58 @@
+---
+- name: instalar paquetes
+  yum:
+    name:
+      - docker
+      - chrony
+      - iputils
+      - net-tools
+      - wget
+    state: present
+
+- name: Docker
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Install Docker Compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m`
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+
+- name: Configure Chrony
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+
+- name: Restart Chrony
+  service:
+    name: chronyd
+    state: restarted
+    enabled: true
+
+- name: agregar usuario
+  user:
+    name: myuser
+    password: "{{ 'password' | password_hash('sha512') }}"
+    groups: sudo
+    state: present
+    shell: /bin/bash
+
+- name: firewalld
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: yes
+  loop:
+    - 8080/tcp
+    - 8081/tcp
+    - 443/tcp
+
+- name: Ensure firewalld is started and enabled
+  service:
+    name: firewalld
+    state: started
+    enabled: true

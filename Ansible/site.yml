@@ -1,0 +1,6 @@
+---
+- name: Configure Oracle Linux v8 Server
+  hosts: all
+  become: true
+  roles:
+    - role1

@@ -1,0 +1,4 @@
+display-message : Staging
+
+server:
+  port: 8081

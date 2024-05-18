@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+        - name: helloworld
+          image: berluseden/helloworld
+          ports:
+            - containerPort: 8080
+          env:
+            - name: VITE_API
+              value: "http://57.151.75.55:8081"

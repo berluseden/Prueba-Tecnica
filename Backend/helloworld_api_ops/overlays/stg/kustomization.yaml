@@ -1,0 +1,17 @@
+bases:
+  - ../../base
+
+namespace: stg-api-namespace
+
+resources:
+  - namespace.yaml
+
+configMapGenerator:
+  - name: app-config
+    files:
+      - configmap-api-stg.yaml
+
+images:
+  - name: berluseden/helloworld-api
+    newName: berluseden/helloworld-api
+    newTag: latest

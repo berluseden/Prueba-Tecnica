@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  my-react-app:
+    image: berluseden/helloworld:latest
+    container_name: helloworld
+    ports:
+      - "8080:8080"
+    environment:
+      - VITE_API=http://localhost:8081/api
+    networks:
+      - my-network
+
+  my-java-app:
+    image: berluseden/helloworld-api:latest
+    container_name: helloworld-api
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - "8081:8081"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

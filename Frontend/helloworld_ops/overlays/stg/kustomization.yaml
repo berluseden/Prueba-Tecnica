@@ -1,0 +1,20 @@
+bases:
+  - ../../base
+
+namespace: stg-namespace
+
+resources:
+  - namespace.yaml
+
+configMapGenerator:
+  - name: app-config
+    files:
+      - configmap-stg.yaml
+
+images:
+  - name: berluseden/helloworld
+    newName: berluseden/helloworld
+    newTag: latest
+
+patchesStrategicMerge:
+  - configmap-stg.yaml

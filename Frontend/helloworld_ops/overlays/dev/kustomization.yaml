@@ -1,0 +1,20 @@
+bases:
+  - ../../base
+
+namespace: dev-namespace
+
+resources:
+  - namespace.yaml
+
+configMapGenerator:
+  - name: app-config
+    files:
+      - configmap-dev.yaml
+
+images:
+  - name: berluseden/helloworld
+    newName: berluseden/helloworld
+    newTag: latest
+
+patchesStrategicMerge:
+  - configmap-dev.yaml

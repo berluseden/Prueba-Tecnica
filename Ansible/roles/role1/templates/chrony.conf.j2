@@ -1,0 +1,11 @@
+# Usar un servidor NTP específico
+server your-ntp-server iburst
+
+# Permitir acceso de clientes NTP desde la red local
+allow 192.168.0.0/16
+
+# Servir la hora incluso si no está sincronizado con un servidor NTP
+local stratum 10
+
+# Especificar el directorio para archivos de registro
+logdir /var/log/chrony

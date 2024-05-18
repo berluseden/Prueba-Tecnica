@@ -1,0 +1,4 @@
+display-message: Default
+
+server:
+  port: 8081
