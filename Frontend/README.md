@@ -1,0 +1,1 @@
+# docker build --build-arg mode=production -t berluseden/helloworld:latest .

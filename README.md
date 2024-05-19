@@ -19,6 +19,7 @@ Para configurar el servidor utilizando Ansible, sigue las instrucciones en [Ansi
 ### Configuración del Backend
 
 Para configurar y desplegar el backend, sigue las instrucciones en [Backend/README.md](Backend/README.md).
+Docker Compose adjuntado para pruebas locales
 
 ### Configuración del Frontend
 
