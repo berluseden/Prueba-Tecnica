@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
-  VITE_API: "http://helloword-api.dev-backend.svc.cluster.local:8081/api"
+  VITE_API: "http://helloworld-api.dev-backend.svc.cluster.local:8081/api"
