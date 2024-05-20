@@ -1,4 +1,3 @@
-# Build stage
 FROM maven:3.9.5-eclipse-temurin-17 as build
 WORKDIR /app
 COPY . .
@@ -9,7 +8,6 @@ FROM eclipse-temurin:17.0.6_10-jdk
 WORKDIR /app
 COPY --from=build /app/target/helloworld-api-0.0.1-SNAPSHOT.jar /app/demoapp.jar
 
-# Environment variable to set the profile
 ENV SPRING_PROFILES_ACTIVE=dev
 
 EXPOSE 8081

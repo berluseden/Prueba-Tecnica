@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloword-api
+  name: helloworld-api
   labels:
-    app: helloword-api
+    app: helloworld-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: helloword-api
+      app: helloworld-api
   template:
     metadata:
       labels:
-        app: helloword-api
+        app: helloworld-api
     spec:
       containers:
-        - name: helloword-api
+        - name: helloworld-api
           image: berluseden/helloworld-api:latest
           ports:
             - containerPort: 8081

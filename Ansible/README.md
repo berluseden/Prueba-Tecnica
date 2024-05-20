@@ -3,7 +3,7 @@
 ## Usage
 Asegúrarse de que el archivo inventory/hosts esté configurado correctamente.
 
-Clona el repositorio en tu máquina local:
+Clona el repositorio:
     ```sh
     git clone https://github.com/berluseden/Prueba-Tecnica.git
     cd Prueba-Tecnica/ansible

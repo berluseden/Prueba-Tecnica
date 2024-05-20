@@ -21,13 +21,6 @@ spec:
     - sleep
     args:
     - 9999999
-  - name: trivy
-    image: aquasec/trivy:latest
-    imagePullPolicy: Always
-    command:
-    - sleep
-    args:
-    - 9999999
   volumes:
   - name: jenkins-docker-cfg
     projected:
@@ -41,7 +34,7 @@ spec:
     }
   }
   environment {
-    DOCKER_REPO = 'berluseden/helloworld-frontend'
+    DOCKER_REPO = 'berluseden/helloworld'
     DOCKER_TAG = 'latest'
   }
   stages {
@@ -50,34 +43,16 @@ spec:
         container('git') {
           sh '''
             git clone https://github.com/berluseden/Prueba-Tecnica.git
+          '''
+        }
+      }
+    }
+    stage('Build and Push with Kaniko') {
+      steps {
+        container('kaniko') {
+          sh '''
             cd Prueba-Tecnica/Frontend/helloworld
-          '''
-        }
-      }
-    }
-    stage('Build with Kaniko') {
-      steps {
-        container('kaniko') {
-          sh '''#!/busybox/sh
-            /kaniko/executor --context `pwd`/Prueba-Tecnica/Frontend/helloworld --dockerfile `pwd`/Prueba-Tecnica/Frontend/helloworld/Dockerfile --destination ${DOCKER_REPO}:${DOCKER_TAG}
-          '''
-        }
-      }
-    }
-    stage('Scan with Trivy') {
-      steps {
-        container('trivy') {
-          sh '''#!/bin/sh
-            trivy image ${DOCKER_REPO}:${DOCKER_TAG}
-          '''
-        }
-      }
-    }
-    stage('Push to Docker Hub') {
-      steps {
-        container('kaniko') {
-          sh '''#!/busybox/sh
-            /kaniko/executor --context `pwd`/Prueba-Tecnica/Frontend/helloworld --dockerfile `pwd`/Prueba-Tecnica/Frontend/helloworld/Dockerfile --destination ${DOCKER_REPO}:${DOCKER_TAG} --push
+            /kaniko/executor --context `pwd` --dockerfile `pwd`/Dockerfile --destination ${DOCKER_REPO}:${DOCKER_TAG}
           '''
         }
       }
