@@ -27,32 +27,6 @@ Los detalles para desplegar la aplicación en Kubernetes utilizando Argo CD se e
 
 Kustomize permite personalizar la configuración de Kubernetes sin modificar los archivos YAML originales. Se recomienda crear diferentes overlays para cada ambiente (desarrollo, staging, producción).
 
-├── backend
-│ ├── base
-│ │ ├── deployment.yaml
-│ │ ├── service.yaml
-│ │ └── kustomization.yaml
-│ ├── overlays
-│ │ ├── development
-│ │ │ └── kustomization.yaml
-│ │ ├── staging
-│ │ │ └── kustomization.yaml
-│ │ └── production
-│ │ └── kustomization.yaml
-└── frontend
-├── base
-│ ├── deployment.yaml
-│ ├── service.yaml
-│ └── kustomization.yaml
-├── overlays
-│ ├── development
-│ │ └── kustomization.yaml
-│ ├── staging
-│ │ └── kustomization.yaml
-│ └── production
-│ └── kustomization.yaml
-
-
 # Guía de Instalación de Jenkins y Argo CD en Kubernetes
 
 ## Instalación de Argo CD

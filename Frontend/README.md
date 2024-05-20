@@ -5,17 +5,3 @@ Etapa de Producción: Copia los archivos construidos en una imagen de Nginx y co
 
 # docker build --build-arg mode=production -t berluseden/helloworld:latest .
 
-# Estructura del Directorio
-
-frontend
-├── base
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   └── kustomization.yaml
-├── overlays
-│   ├── development
-│   │   └── kustomization.yaml
-│   ├── staging
-│   │   └── kustomization.yaml
-│   └── production
-│       └── kustomization.yaml
