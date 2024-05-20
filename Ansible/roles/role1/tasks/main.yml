@@ -51,7 +51,7 @@
     - 8081/tcp
     - 443/tcp
 
-- name: Ensure firewalld is started and enabled
+- name: Ensure firewalld 
   service:
     name: firewalld
     state: started
