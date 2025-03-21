@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: app-config
 data:
-  VITE_API: "http://57.151.75.55:8081/api"
+  VITE_API: "http://10.210.6.65:8081/api"
